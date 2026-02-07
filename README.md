@@ -8,3 +8,14 @@ Members:
 
 - Hoang Thuan Pham
 - Minh Huy Tran
+
+## Design
+
+### User inputs
+
+- Goal: Strength or Hypertrophy
+- Frequency: 3,4,5,6
+- Primary muscle group: Chest, Back, Shoulder, Legs
+- Time: Under 1 hour, 1-2 hour
+- Exercise type preference: Free weight, Machine
+
