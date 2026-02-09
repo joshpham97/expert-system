@@ -210,13 +210,6 @@ A push day must include chest exercises.
 A push day must include shoulder exercises.
 A push day must include triceps exercises.
 
-Upper-lower
-A upper-lower program can be 4 days.
-A upper-lower program can be 5 days.
-A lower day is a leg day.
-An upper day must include triceps exercise.
-An upper day must include biceps exercise.
-
 Full body
 //TBD
 A fullbody program can be 3 days.
