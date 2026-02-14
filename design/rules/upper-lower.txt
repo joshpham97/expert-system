@@ -1,61 +1,86 @@
-# Facts
 
-A upper-lower program can be 4 days.
-A upper-lower program can be 5 days.
+# Day template
 
-# Rules
+A day has a name
+A day has exercises
 
-## Composition
+# Determining the split
 
-IF program is upper-lower THEN
-    IF frequency per week is 4 days THEN
-        Day 1 is a upper day
-        Day 2 is a leg day
-        Day 3 is a upper day
-        Day 4 is leg day
-    ELSE IF frequency per week is 5 days THEN
-        Day 1 is a upper day
-        Day 2 is a leg day
-        Day 3 is a upper day
-        Day 4 is leg day
-        Day 5 is a shoulder day
-    END IF
-ENDIF
-
-IF program is upper-lower AND day is upper day THEN
-    Day must have 2 chest exercises
-    Day must have 2 back exercises
-    Day must have 1 tricep exercise
-    Day must have 1 bicep exercise
-    IF frequency per week is 4 days THEN
-        Day must have 1 shoulder exercise
-    END IF 
-END IF
-
-IF program is upper-lower AND day is shoulder day THEN
-    Day must have 1 front delt exercise
-    Day must have 1 side delt exercise
-    Day must have 1 rear delt exercise
-END IF
-
-IF program is upper-lower AND day is leg day THEN
-    Day must have 1 quad exercise
-    Day must have 1 hamstring exercise
-    Day must have 1 glutes
-    Day must have 1 calves
-END IF
-
-## Selection
-
-IF program is upper-lower AND day is upper AND frequency is 4 times a week THEN
-    IF priority is chest THEN 
-        The day must start with a chest exercise
-    ELSE IF priority is back THEN 
-        The day must start with a back exercise
-    ELSE IF priority is shoulder THEN 
-        The day must start with a shoulder exercise
+IF frequency is 3 days THEN
+    IF user preference is Full body THEN
+        Workout split is Full body OR
     ELSE
-        One upper day must start with a chest exercise
-        One upper day must start with a back exercise // ?? is this good
-    END IF
-END IF
+        Workout split is Push-pull-leg
+ELSE IF frequency is 4 days OR 5 days THEN
+    Workout split is Upper-Lower
+ELSE IF frequency is 6 days THEN
+    Workout split is Push-pull-leg
+
+# Intializing the days
+
+IF Workout split is Upper-Lower THEN
+    Routine has a day named Upper1
+    Upper1 focus is Upper
+    Routine has a day named Lower1
+    Lower1 focus is Lower
+    Routine has a day named Upper2
+    Upper2 focus is Upper
+    Routine has a day named Lower2
+    Lower2 focus is Lower
+
+IF workout split is upper-lower AND frequency is 5 days THEN
+    Routine has a day named Shoulder
+    Shoulder focus is Shoulder
+
+# Initialize template for each day (Hard-coded for now but can be improved)
+
+IF Day focus is Upper THEN
+    Day includes 2 chest exercises
+    Day includes 2 back exercises
+    Day includes 1 biceps exercise
+    Day includes 1 tricep exercise
+    IF frequency is 4 days THEN
+        Day include 1 shoulder exercise
+
+IF Day is Upper1 THEN
+    Exercise 1 is chest
+    Exercise 2 is back
+    Exercise 3 is chest
+    Exercise 4 is Back
+ELSE IF Day is Upper2 THEN 
+    Exercise 1 is back
+    Exercise 2 is chest
+    Exercise 3 is back
+    Exercise 4 is chest
+ELSE IF Day is Lower1 THEN
+    Exercise 1 is quads
+    Exercise 2 is hamstring
+    Exercise 3 is glutes
+    Exercise 4 is calves
+ELSE IF Day is Lower2 THEN 
+    Exercise 1 is hamstring
+    Exercise 2 is quads
+    Exercise 3 is glutes
+    Exercise 4 is calves
+ELSE IF Day is Shoulder THEN 
+    All exercises are shoulder
+
+IF Day is Upper THEN
+    Exercise 5 is triceps
+    Exercise 6 is biceps
+
+IF Day is Lower THEN
+    Exercise 3 is glutes
+    Exercise 4 is calves
+
+# Exercise matching
+
+FOR EACH day:
+    FOR EACH exercise of the day:
+        IF exercise in fact base matches the target muscle group AND
+            exercise in fact base is unassigned AND
+            exercise in fact base has the highest priority among the unassigned AND
+            exercise in fact base matches the user preferences AND
+            exercise in fact base matches the user goal 
+        THEN 
+            exercise in fact base is assigned to day
